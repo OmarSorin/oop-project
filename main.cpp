@@ -4,7 +4,37 @@
 // This also works if you do not want `include/`, but some editors might not like it
 // #include "Example.h"
 
+class Ventilator {
+    int m_rps;
+    double m_zgomot;
+    std::string m_model;
+
+public:
+    explicit(false) Ventilator(int rps) : m_rps(rps) {}
+    int get_rps() {
+        if (m_rps>0)
+            return 0;
+        return m_rps;
+    }
+
+    void set_rps(int rps) { m_rps=rps; }
+
+    [[nodiscard]] std::string get_m_model() const {
+        return m_model;
+    }
+
+    void set_m_model(const std::string &model) {
+        this->m_model = model;
+    }
+
+};
+
+void f(Ventilator v) {
+    std::cout << v.get_m_model()<<"\n";
+}
+
 int main() {
+    f(Ventilator{3});
     std::cout << "Hello, world!\n";
     Example e1;
     e1.g();
